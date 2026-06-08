@@ -1,0 +1,148 @@
+# I — INSTRUCTION
+ 
+I already have an existing project that ingests resumes that are in pdf format to mongodb. 
+Analyze the code and design a utility to add a new feature that can be used to ingest resumes in batches.
+Utility should take files from "Resumes" folder in the project folder
+The batch size should be configurable and defaulted to 5. 
+Batch size can maximum be 10.
+The processed and successfully ingested files should move to folder "ProcessedResumes"
+If there is any issue with the file it should move to folder "UnprocessedResumes"
+Any error in processing should be written in detail to file called #Actualfilename#.error under "UnprocessedResumes" folder. 
+
+ 
+Utility should be simple and be able to run by a command line in server
+
+# C — CONTEXT
+ 
+I already have a working Resume Ingest/Search/Retrieval system.
+API End points for each phase is already in the application
+
+
+Existing Application techstack:
+ 
+- Node.js
+- Express
+- TypeScript
+- MongoDB Atlas
+- Mistral Embedding API
+
+
+Existing application flow:
+
+The overall system should work something like this:
+ 
+Resume PDF
+    ↓
+Read Resume Content
+    ↓
+Clean Text
+    ↓
+Extract Resume Information
+    ↓
+Generate Embedding
+    ↓
+Store in Database
+ 
+The final stored data may contain fields like:
+ 
+- name
+- email
+- phone
+- skills
+- experience
+- education
+- company
+- embedding
+
+Now I want to enhance the same by adding a utility for batch processing for ingesting resume 
+ 
+The new feature should allow uploading resume PDFs in batches and storing searchable resume data into MongoDB.
+ 
+The system should:
+ 
+- take resume PDF files from "Resumes" folder
+- ingest the resume into mongodb using the inject pipeline that is already in the application. 
+ 
+---
+
+Please decide the following for the new utility:
+
+- folders
+- services
+- processing flow
+- validations
+- logging
+
+ based on my requirement.
+
+ 
+Do not generate frontend.
+ 
+Do not generate implementation code.
+ 
+Generate only design and implementation planning.
+ 
+Explain everything step-by-step in a clean structure.
+ 
+The response should be easy to understand and easy to implement in steps.
+Utility  should use the existing logging features of the application and provide server logs after execution 
+
+---
+ 
+ 
+ 
+# E — EXAMPLE
+ 
+The utility system should work something like this:
+ 
+run the utility
+it should read the batchsize from .env file
+it should read the #bacthsize# number of files from the Resumes folder
+it should call the inject pipeline already existing functionality in application and ingest the resumes to mongodb
+it should move processed files to "ProcessedResumes" folder
+it should move error files to "UnprocessedResumes" folder and create #filename#.error text file with details of failure
+it should message "No more files to process" if all files are processed 
+---
+ 
+# P — PERSONA
+ 
+Act like an experienced backend architect helping someone design this feature properly inside an existing project.
+ 
+Keep the explanation:
+- practical
+- realistic
+- implementation-oriented
+- cleanly organized
+ 
+Do not overcomplicate the explanation.
+ 
+---
+ 
+# O — OUTPUT FORMAT
+ 
+Generate the response in Markdown format.
+ 
+The response should contain:
+ 
+1. Utility Overview
+2. Recommended design
+3. Suggested Folder Structure
+4. File Responsibilities
+5. Running the utility
+6. Error Handling 
+7. Implementation Plan
+
+Use:
+- headings
+- flow diagrams
+- simple explanations
+ 
+Do not generate implementation code.
+ 
+---
+ 
+# T — TASK
+ 
+Design a complete  design for adding a utility to implement a batch ingestion workflow in the existing application with above details
+  
+Generate the design document now.
